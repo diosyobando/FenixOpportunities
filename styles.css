@@ -1,0 +1,854 @@
+/* → → → Configuraciones Generales */
+
+*{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+    text-decoration: none;
+}
+
+button {
+    all: unset;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+*::selection {
+    background-color: purple;
+    color: white;
+}
+
+*::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+/* Cierre Configuraciones Generales ← ← ← */
+
+
+/* → → → Container Main */
+.container-main {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Estilos para el video de fondo */
+.container-main .bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Para que el video cubra todo el contenedor */
+    z-index: -1; /* Coloca el video detrás del contenido principal */
+}
+
+.container-main ul {
+    height: 2rem;
+    overflow: visible;
+}
+/* Estilos generales del header */
+.container-main header {
+    display: flex;
+    overflow: visible;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Para hacer el header fijo en la parte superior */
+    width: 100%;
+    background-color: transparent; /* Fondo transparente inicial */
+    transition: background-color 0.3s ease; /* Transición suave para el fondo */
+    padding: 20px; /* Espaciado interno */
+    color: white; /* Color del texto */
+    z-index: 99;
+}
+
+/* Estilos para el logo */
+.container-main .logo img {
+    max-width: 100px;
+    height: auto;
+    margin-top: 10px; /* Agregar margen superior */
+    margin-left: 20px; /* Agregar margen izquierdo */
+    cursor: pointer; /* Cambiar el cursor al hacer clic en el logo */
+}
+
+
+
+/* Estilos para la barra de navegación */
+.container-main nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Espacio entre elementos de navegación */
+}
+
+.container-main nav ul li {
+    font-size: 16px; /* Tamaño de fuente para los elementos de navegación */   
+}
+
+.container-main nav ul li a {
+    text-decoration: none;
+    color: white; 
+    font-weight: 400; 
+    margin-right: 40px; 
+    transition: border-bottom 0.3s ease;
+}
+
+/* Cambiar el color del texto de los enlaces al pasar el cursor sobre ellos */
+.container-main nav ul li a:hover {
+    color: #FFC700;
+    border-bottom: 2px solid #FFC700; 
+    padding-bottom: 3px;
+    transition: border-bottom 0.3s ease;
+}
+
+
+/* Estilos para los párrafos */
+.container-main .title {
+    position: absolute;
+    top: 40%;
+    left: 100px;
+    text-align: left;
+    opacity: 0; 
+    transform: translateY(-50px);
+    transition: opacity 0.5s, transform 0.8s; 
+}
+
+.container-main .light-text {
+    font-size: 30px;
+    color: #FFC700; 
+    font-weight: 100; 
+    margin-bottom: 10px; 
+}
+
+.container-main .bold-text {
+    font-size: 60px;
+    color: #fff; 
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Estilo para el div "subtitle" */
+.container-main .subtitle {
+    background: rgba(255, 255, 255, .1);
+    position: absolute;
+    bottom: 0; 
+    right: 0; 
+    width: 50%; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    transition: width 0.5s; 
+    clip-path:  polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 33%);
+    backdrop-filter: blur(16px);
+    opacity: 0; 
+    transform: translateY(50px);
+    transition: opacity 0.5s, transform 0.5s; 
+
+}
+
+/* Estilo para los párrafos dentro de "subtitle" */
+.container-main .subtitle p {
+    margin: 0; 
+    font-size: 1rem; /* Tamaño de fuente inicial relativo */
+    
+}
+
+/* Establecer el ancho completo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .subtitle {
+        width: 100%; /* Hacer que el div ocupe todo el ancho de la pantalla */
+    }
+}
+
+/* Define animaciones para los textos */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplica animaciones cuando se carga la página */
+.container-main .title {
+    animation: fadeInUp 1s ease-in-out 0.5s forwards; /* Inicia la animación después de 0.5 segundos */
+}
+
+.container-main .subtitle {
+    animation: fadeInUp 1s ease-in-out 1s forwards; /* Inicia la animación después de 1 segundo */
+}
+
+/* Estilo para el primer párrafo "sub1" */
+.container-main .sub1 {
+    position: relative;
+    float: left; /* Hace que este párrafo se coloque a la izquierda del segundo párrafo */
+    width: 50%; /* Ocupa inicialmente el 50% del ancho del div "subtitle" */
+    clear: none; /* Elimina el efecto clear para que los párrafos estén uno al lado del otro */
+    top: 10px;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.container-main .sub2 {
+    float: left; /* Hace que este párrafo se coloque a la izquierda del primer párrafo */
+    width: 50%; /* Ocupa inicialmente el 50% del ancho del div "subtitle" */
+    clear: none; /* Elimina el efecto clear para que los párrafos estén uno al lado del otro */
+    font-family: 'Inter', sans-serif;
+    color: white;
+    text-align: justify;
+}
+
+  
+/* Cierre Container Main ← ← ← */
+
+/* --------------------------- */
+
+/* → → → Container About */
+.container-about {
+    position: relative;
+    margin: 50px 0 0;
+    height: 100vh;
+}
+
+.center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Cuadro de informacion */
+.container-about .square-background {
+    position: absolute;
+    left: -5rem;
+    width: 65rem;
+    height: 23rem;
+    background: rgba(30, 0, 57, .80);
+    clip-path: polygon(85% 0, 100% 25%, 100% 100%, 0 100%, 0 0);
+    backdrop-filter: blur(12px);
+    z-index: 2;
+    animation: AnimSquare 2s ease 0s 1 normal forwards;
+}
+
+.container-about .square-background .title {
+    position: relative;
+    top: 2.5rem;
+    left: 10rem;
+    color: white;
+    font-size: 3.4rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: 'Chakra Petch', sans-serif;
+    z-index: 4;
+    
+}
+
+.container-about .square-background .p1 {
+    position: relative;
+    width: 75%;
+    font-size: 1rem;
+    text-align: justify;
+    top: 2.9rem;
+    left: 10rem;
+    color: white;
+    line-height: 160.523%;
+    letter-spacing: .25px;
+    font-weight: 300;
+    font-family: 'Inter', sans-serif;
+    z-index: 5;
+}
+/* Fin Cuadro de informacion */
+
+/* Imagenes de Fondo */
+.container-about .background {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.container-about .fenix {
+    max-width: 100%;
+    height: auto;
+    z-index: 3;
+    mix-blend-mode: color;
+    animation: AnimLeft 2s ease 0s 1 normal forwards;
+}
+
+.container-about .engineer {
+    position: relative;
+    max-width: 55%;
+    height: 100vh;
+    animation: AnimRight 2s ease 0s 1 normal forwards;
+}
+/* Fin Imagenes de Fondo */
+
+/* Cierre Container About ← ← ← */
+
+/* --------------------------- */
+
+/* → → → Container Services */
+/* Estilo para el contenedor principal */
+  
+  /* Estilo para ocultar los elementos inicialmente */
+
+
+/* Estilo del contenedor principal */
+
+.container-services {
+    position: relative;
+    width: 100%;
+    height: 140vh;
+    padding: 3rem 0;
+  }
+  .container-pm {
+    animation: none; /* Desactiva la animación inicialmente */
+  }
+  .container-pm {
+    animation: AnimRight 50s ease 0s 1 normal forwards;
+  }
+  /* Project Management */
+  .container-pm .services-background {
+    position: absolute;
+    top: 5.2rem;
+    right: 0;
+    width: 65rem;
+    height: 19rem;
+    background: rgba(30, 0, 57, 0.80);
+    clip-path: polygon(85% 0, 100% 25%, 100% 100%, 0 100%, 0 0);
+    backdrop-filter: blur(12px);
+    transform: scaleX(-1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Contenedor del servicio */
+  
+  /* Estilo de la imagen del servicio */
+  .container-pm .project-img {
+    position: relative;
+    max-width: 600px; 
+    height: auto;
+    margin-left: 0;
+    animation: AnimRight 2s ease 0s 1 normal forwards;
+  }
+
+
+  
+  /* Estilo del título del servicio */
+  .container-pm .titleProject {
+    color: #FFC700;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;  
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+  }
+ 
+  .container-pm .service-txt {
+    position: relative;
+    top: 1rem;
+    left: 40rem;
+    transform: scaleX(-1);
+  }
+
+  .container-pm  .service-txt p {
+    width: 19rem;
+  }
+  
+  /* Estilo del párrafo del servicio */
+  .container-pm .parrafoProject {
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    /* // */
+    
+  /* Estilo de la barra de iconos */
+  .container-pm  .iconBar {
+    position: relative;
+    right: 19em;
+    top: -1.3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    transform: scaleX(-1);
+    align-content: center;
+    width: 600px;
+  }
+  
+.container-pm .iconBar img {
+    width:50px;
+  }
+.container-pm .iconBar p {
+    text-align: center;
+    width: 80%;
+  }
+  
+.container-pm .iconBar .item {
+    width: 200px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+  }
+
+/* Cierre Project Management */
+
+/* General Contactor TODO:*/
+/* Estilo de la imagen del servicio */
+
+.container-gc .project-img {
+  position: relative;
+  max-width: 600px; 
+  height: auto;
+  float: right;
+  margin-top: 140px;
+}
+
+.container-gc .services-background {
+    position: absolute;
+    top: 42rem;
+    left: 0;
+    width: 65rem;
+    height: 19rem;
+    background: rgba(30, 0, 57, 0.80);
+    clip-path: polygon(85% 0, 100% 25%, 100% 100%, 0 100%, 0 0);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scaleX(1);
+  }
+    
+  /* Estilo del título del servicio */
+  .container-gc .titleProject {
+    color: #FFC700;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;  
+    font-family: 'Inter', sans-serif;
+    transform: scaleX(1);
+    text-align: right;
+
+  }
+ 
+  .container-gc .service-txt {
+    position: relative;
+    top: 1rem;
+    left: 40rem;
+    transform: scaleX(1);
+  }
+
+  .container-gc  .service-txt p {
+    width: 19rem;
+    text-align: right;
+
+  }
+  
+  /* Estilo del párrafo del servicio */
+  .container-gc .parrafoProject {
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 20px;
+      text-align: right;
+    }
+    /* // */
+    
+  /* Estilo de la barra de iconos */
+  .container-gc  .iconBar {
+    position: relative;
+    right: 19rem;
+    top: -1.3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    width: 600px;
+    transform: scaleX(1);
+  }
+  
+.container-gc .iconBar img {
+    width:50px;
+  }
+.container-gc .iconBar p {
+    text-align: center;
+    width: 60%;
+  }
+  
+.container-gc .iconBar .item {
+    width: 200px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+  }  
+
+
+  
+/* Ciere Contactor */
+
+/* Cierre Container Services ← ← ← */
+
+/* --------------------------- */
+
+/* → → → Container Contact */
+.container-contact {
+    position: relative;
+}
+
+/* Cuadrado de contacto */
+.container-contact .square-wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    color: white;
+    animation: AnimRight 15s ease 0s 1 normal forwards;
+}
+
+.container-contact .square-wrapper .text {
+    position: relative;
+    top: 22rem;
+    left: 12rem;
+    z-index: 2;
+    overflow: visible;
+}
+
+.text::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 2px; 
+    background-color: #7600E8; 
+    border-radius: 5px;
+    left: -3rem; 
+}
+
+.container-contact .square-wrapper h1 {
+    font-size: 65px;
+    width: 20rem;
+    font-weight: 400;
+    margin-left: 10px;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+/* Contact us button */
+.container-contact .square-wrapper button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    width: 12rem;
+    justify-content: center;
+    padding: 20px;
+    cursor: pointer;
+    
+    border-radius: 12px;
+    color: black;
+    background: white;
+
+    transition: all 0.7s ease;
+}
+
+.container-contact .square-wrapper button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(185, 185, 185, 0.126), 0 6px 6px rgba(35, 35, 35, 0.23);
+    transition: all 0.8s ease;
+}
+/* Fin Contact us button */
+
+/* Popup */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 99; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+/* Estilos para el contenido del popup */
+.modal-content {
+    position: relative;
+    width: 60%; 
+    height: 75%;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 5% auto; 
+    padding: 20px;
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-content .contact-label {
+    text-align: center;
+    font-weight: 400;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+/* Inputs  */
+.modal form {
+    overflow: visible;
+}
+
+.modal .row {
+ width: 100%;
+ margin-top: 20px;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+
+.modal .row input[type="tel"] {
+   margin-left: 10px;    
+}
+
+.input-field {
+ display: flex;
+ flex-direction: column;
+ flex: 1; 
+ 
+}
+.input-field label {
+    margin-left: 5px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.modal-content #textarea {
+    margin-top: 10px;
+}
+
+.modal form input, 
+.modal form textarea{
+   height: 3rem;
+   background: rgba(193, 193, 193, 0.21);
+   backdrop-filter: blur(5px);
+   border: none;
+   border-radius: 10px;
+   box-shadow: 3px 4px 9px 0px rgba(156, 156, 156, 0.45);
+   padding-left: 20px;
+}
+
+.modal form textarea {
+   resize: none;
+   height: 5.5rem;
+   padding: 13px 15px;
+}
+
+.modal form input::placeholder, 
+.modal form textarea::placeholder{
+   color: #8e8e8e;
+   font-weight: 400;
+}
+/* // fin inputs */
+
+/* Botón para cerrar el popup */
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px 40px;
+    color: #000;
+    font-size: 28px;
+    transition: .5s;
+}
+
+.close:hover,
+.close:focus {
+    color: #FFD600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .5s;
+}
+/* // fin boton x */
+
+/* Submit button  */
+.modal-content button {
+   width: 90px;
+   height: 40px;
+   position: relative; 
+   top: 2rem;
+   left: 50%;
+   background: rgb(0, 0, 0);
+   text-align: center;
+   border-radius: 5px;
+   transition: .5s;
+   font-weight: 400;
+   color: white;
+   transform: translate(-50%,-50%);
+}
+
+.modal-content button:hover {
+   transition: .5s;
+   background: #A51771;
+}
+/* // fin submit button */
+
+/* Fin Popup */
+
+.container-contact .square-wrapper button span {
+    font-weight: 500;
+    font-size: 21px;
+}
+
+.container-contact .square-wrapper button img {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.container-contact .square-background {
+    position: relative;
+    top: 0.8px;
+    width: 40rem;
+    height: 27rem;
+    background: rgba(30, 0, 57, .70);
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%, 0 30%);
+    backdrop-filter: blur(14px);
+    border-top-left-radius: 80px;
+}
+/* Fin Cuadrado de contacto */
+
+.container-contact .background-img {
+    background-image: url('src/Footer background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    transform: scaleX(-1);
+}
+/* Cierre Container Footer ← ← ← */
+
+/* → → → Footer */
+.container-footer {
+    width: 100%;
+    height: 200px;
+    color: #fff;
+    background: #1A0033;
+}
+
+/* Logo*/ 
+.container-footer .container-info .logo {
+    cursor: pointer;
+    align-content: center; 
+    margin-right: 13rem;
+    margin-top: 28px;
+}
+
+.container-footer .container-info .logo img {
+    width: 6.2rem;
+}
+/* Fin Logo */
+
+/* List */
+.container-footer .container-info {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 18px;
+}
+
+.container-footer .nav .list-item{
+    padding:7px;
+    margin-right: 15rem;
+    cursor: pointer;
+}
+
+.container-footer .contact-info .list-item{
+    padding: 7px;
+}
+
+.container-footer .nav .list-item.about{
+    margin-top: 20px;
+}
+
+.container-footer .contact-info .list-item.phone{
+    font-size: 30px;
+    font-weight: 400;
+}
+.nav a {
+    color: white;
+    border-style: none;
+}
+/* Fin List */
+
+/* Copyrigth */
+.container-footer .copyrigth {
+    position: relative;
+    left: 10%;
+    bottom: -20%;
+    background: #1A0033;
+}
+
+.container-footer .copyrigth span {
+    color: #AAAAAA;
+    background: #1A0033;
+}
+/* Fin Copyrigth */
+/* Cierre Container Footer ← ← ← */
+
+/* Animaciones */
+
+/* About */
+@keyframes AnimRight {
+	0% {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes AnimLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes AnimSquare {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(2rem);
+    }
+}
+
+
+/* Fin About */
+
+/* Fin Animaciones */
